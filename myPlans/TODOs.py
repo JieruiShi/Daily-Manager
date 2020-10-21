@@ -206,7 +206,7 @@ def main(filepath, filepath2):
         else:
             pass
 if __name__ == '__main__':
-    from myscripts import publicstuff
-    main('todo.json','archieve.json')
+    from myscripts import publicstuff, config
+    main(config.ACTIVE_FILEPATH,config.ARCHIEVE_FILEPATH)
 else:
     import publicstuff

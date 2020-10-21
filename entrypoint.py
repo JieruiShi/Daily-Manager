@@ -3,6 +3,7 @@
 import diaryWritter
 import webBrowser.emailBrowser
 import myPlans.TODOs
+import config
 
 while True:
     choice = input('What would you like to do?\n---web (shortcut: email)\n---diary\n---todo\n')
@@ -23,7 +24,7 @@ while True:
 
     if 'todo' in choice:
         print(20 * '-' + 'enter todo section' + 20 * '-')
-        myPlans.TODOs.main('myPlans/todo.json','myPlans/archieve.json')
+        myPlans.TODOs.main(config.ACTIVE_FILEPATH, config.ARCHIEVE_FILEPATH)
         print(20 * '-' + 'exit todo section' + 20 * '-')
 
     if input('terminate(y/n): ') == 'y':
