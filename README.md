@@ -5,4 +5,4 @@ Mainly a todo list
 
 Change filepath in config.py
 
-Modules can be run alone
+Modules can be run alone, but need to configure filepath
