@@ -4,15 +4,16 @@ import diaryWritter
 import webBrowser.emailBrowser
 import myPlans.TODOs
 import finance.overhead
+import betterDiaryWritter
 import config
 
 dailyManagerModules = {
-    'diary': (diaryWritter.main, None),
-    'todo' : (myPlans.TODOs.main,(config.ACTIVE_FILEPATH, config.ARCHIEVE_FILEPATH)),
-    'overhead': (finance.overhead.main,(config.OVERHEAD_FILEPATH,))
+    'diary': (betterDiaryWritter.main, (config.DIARYCACHE_FILEPATH,), True),
+    'todo': (myPlans.TODOs.main,(config.ACTIVE_FILEPATH, config.ARCHIEVE_FILEPATH), False),
+    'overhead': (finance.overhead.main,(config.OVERHEAD_FILEPATH,), False)
 }
-#the dict above uses module name: (function, parameters) to record the information for each function,
-#use None if the funcion doesn't require a parameter and string 'userinput' to pass the command as a parameter
+#the dict above uses module name: (function, parameters, pass command as last parameter) to record the information for each function,
+#use () or none if the funcion doesn't require a parameter and True to pass the command as the last parameter
 
 def main():
     inputPrompt = 'What would you like to do?' #entrypoint prompt for input
@@ -25,17 +26,10 @@ def main():
             if module in choice:
                 print(20 * '-' + 'entering ' + module + ' section' + 20 * '-')
 
-                func, para = dailyManagerModules[module][0], dailyManagerModules[module][1]
-                if para:
-                    if para == 'userinput':
-                        # the case where the parameter is the userinput
-                        func(choice)
-                    else:
-                        # the case where there are parameters passed into the function
-                        func(*para)
-                else:
-                    # the case where the parameter is None
-                    func()
+                currentModule = dailyManagerModules[module]
+                func, para = currentModule[0], (currentModule[1] if not currentModule[2] else currentModule[1] + (choice,))
+                #add command to the parameter tuple, making it the last parameter if currentModule[2] is true
+                func(*para)
 
                 print (20*'-' + 'exiting ' + module + ' section' + 20*'-')
                 break #stop looking for other modules (only one modules can be used with one command in entry point)
