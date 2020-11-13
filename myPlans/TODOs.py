@@ -43,7 +43,6 @@ def addTODOS(filepath, haveFlags = False):
                 y = today.year
             return datetime.datetime(y,m,d).timestamp() + 86400
 
-
         elif re.search(pattern1,timeinput):
             #eg: 1d 14hrs
             dpos = timeinput.find('d')
