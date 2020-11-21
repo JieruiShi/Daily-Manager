@@ -1,4 +1,5 @@
 #This file is to contain information based on the client's computer, filepath, customization, etc
+#Rename the file config.py before use
 import os
 srcPath = os.path.dirname(os.path.realpath(__file__)) # Get the file path to src
 prePath = srcPath[:-3] + 'presentables'
