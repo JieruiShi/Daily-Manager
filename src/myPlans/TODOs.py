@@ -131,9 +131,19 @@ def addTODOS(filepath, haveFlags = False):
         json.dump(sortedData, filewrite)
 
 def showTODOS(filepath):
-    with open(filepath, 'r') as fileread:
-        data = json.load(fileread)
+    try:
+        with open(filepath, 'r') as fileread:
+            data = json.load(fileread)
+    except FileNotFoundError:
+        data = []
+        with open(filepath, 'w') as filewrite:
+            json.dump(data,filewrite)
+    # Try-except handles the first time using the script, creating a new To do log, it is placed here as this is the first function called
 
+    if len(data) == 0:
+        print("You have no task at present, hooray!")
+        return
+        #Don't print the rest if there is no task!
     maxDistance = 100
     #TODO:maxDistance is to be determined by the length of the longest task
     #print title
@@ -158,8 +168,12 @@ def tickTODOS(filepath,filepath2,taskno, exitStatus):
     with open(filepath,'r') as fileread:
         data = json.load(fileread)
 
-    with open(filepath2, 'r') as fileread:
-        data2 = json.load(fileread)
+    try:
+        with open(filepath2, 'r') as fileread:
+            data2 = json.load(fileread)
+    except FileNotFoundError:
+        data2 = []
+        # Try-except handles the first time using the script, creating a new archieve file
 
     popDatum = data.pop(taskno)
     with open(filepath, 'w') as filewrite:
