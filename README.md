@@ -1,4 +1,4 @@
-##Daily Manager
+## Daily Manager
 Making a todo list, a finance sheet on separate word and excel document and perhaps forget about it?
 Or it takes so much time to find the location of the file when ever it is needed?
 
