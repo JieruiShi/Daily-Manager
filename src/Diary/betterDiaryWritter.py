@@ -78,9 +78,19 @@ def clearDiaryCache(filepath):
         json.dump(data, filewrite)
 
 def main(filepath, command):
-    with open(filepath, 'r') as fileread:
-        data = json.load(fileread)
-    #load the data from the diaryCache first
+    try:
+        with open(filepath, 'r') as fileread:
+            data = json.load(fileread)
+        # load the data from the diaryCache first
+    except FileNotFoundError:
+        data = {
+            'Main': [''],
+            'Work': [''],
+            'Happy': [''],
+            'Plan': [''],
+            '_Today': []
+        }
+    # Try-except handles the first time using the script, creating a new diary cache
 
     check = checkToday(data) #use checkToday function to see if _Today was populated, and whether to remind writing to diary
 
