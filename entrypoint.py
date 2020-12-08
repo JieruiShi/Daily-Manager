@@ -4,11 +4,13 @@ from src import config
 from src.Diary import betterDiaryWritter
 from src.myPlans import TODOs
 from src.Finance import overhead
+from src.Focus import focus
 
 dailyManagerModules = {
     'diary': (betterDiaryWritter.main, (config.DIARYCACHE_FILEPATH,), True),
     'todo': (TODOs.main,(config.TODO_FILEPATH, config.ARCHIEVE_FILEPATH), False),
-    'overhead': (overhead.main,(config.OVERHEAD_FILEPATH,), False)
+    'overhead': (overhead.main,(config.OVERHEAD_FILEPATH,), False),
+    'focus':(focus.main,(config.FOCUSCACHE_FILEPATH,),True)
 }
 
 #the dict above uses module name: (function, parameters, pass command as last parameter) to record the information for each function,

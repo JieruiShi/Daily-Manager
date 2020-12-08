@@ -24,3 +24,8 @@ DIARYCACHE_FILEPATH = srcPath + r'\Diary\diaryCache.json'
 #1. filepath to overhead document (Excel, xlsx format)
 
 OVERHEAD_FILEPATH = prePath + r'\overhead.xlsx'
+
+#focus module
+#
+#1. filepath to focus cache(store current event only)
+FOCUSCACHE_FILEPATH = srcPath + r'\Focus\focusCache.json'

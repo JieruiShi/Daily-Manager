@@ -165,4 +165,4 @@ def main(filepath, command):
 
 if __name__ == '__main__':
     command = input('input: focus + ')
-    main('focus.json',command)
+    main('focusCache.json',command)

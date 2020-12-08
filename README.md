@@ -10,6 +10,7 @@ Current Modules:
 * diary
 * todo
 * overhead
+* focus (currently under development and prone to error)
 
 ![Screenshot](screenshot.jpg)
 
